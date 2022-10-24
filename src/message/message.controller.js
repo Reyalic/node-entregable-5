@@ -2,18 +2,19 @@ const Messages = require("../models/messages.model")
 
 const uuid = require("uuid")
 
-const getAllMessages = async (conversationId) => {
+const getAllMessages = async (userId, conversationId) => {
     const data = await Messages.findAll({
-        where: conversationId
+        where: conversationId,
+                userId
     })
     return data
 }
 
-const postMessage = async (conversationId, data) => {
+const postMessage = async (data) => {
     const response = await Messages.create({
         id: uuid.v4(),
         userId: data.userId,
-        where: conversationId,
+        conversationId: data.conversationId,
         message: data.message
     })
     return response

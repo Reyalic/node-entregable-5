@@ -14,10 +14,9 @@ const getAllMessages = (req, res) => {
 
 const postMessage = (req, res) => {
     const userId = req.user.id
-    const conversationId = req.params.id
-    const  message = req.body
+    const  {message, conversationId} = req.body
 
-    if(message) {
+    if(message && conversationId) {
         messagesControllers.postMessage({userId, conversationId, message})
             .then(data => {
                 res.status(201).json(data)
