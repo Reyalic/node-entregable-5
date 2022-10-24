@@ -28,10 +28,10 @@ const getConversationById = (req, res) => {
 
 const postConversation = (req, res) => {
     const userId = req.user.id
-    const {title, ImageUrl} = req.body
+    const {title, imageUrl} = req.body
 
-    if (title && ImageUrl) {
-        conversationControllers.createConversation({title, ImageUrl, userId})
+    if (title && imageUrl) {
+        conversationControllers.createConversation({title, imageUrl, userId})
             .then(data => {
                 res.status(201).json(data)
             })
