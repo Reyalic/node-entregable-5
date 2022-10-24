@@ -19,7 +19,17 @@ const postMessage = async (data) => {
     return response
 }
 
+const deleteMessage = async (id) => {
+    const data = await Messages.destroy({
+        where: {
+            id
+        }
+})
+    return data
+}
+
 module.exports = {
     getAllMessages,
-    postMessage
+    postMessage,
+    deleteMessage
 }
