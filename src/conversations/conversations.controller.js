@@ -26,8 +26,28 @@ const createConversation = async (data) => {
     return response
 }
 
+const updateConversation = async (id, data) => {
+    const result = await Conversations.update(data, {
+        where: {
+            id
+        }
+    })
+    return result
+}
+
+const deleteConversation = async (id) => {
+    const data = await Conversations.destroy({
+        where: {
+            id
+        }
+})
+    return data
+}
+
 module.exports = {
     getAllConversations,
     getConversationById,
-    createConversation
+    createConversation,
+    updateConversation,
+    deleteConversation
 }
