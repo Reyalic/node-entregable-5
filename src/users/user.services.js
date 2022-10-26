@@ -12,9 +12,10 @@ const getAllUsers = (req, res) => {
 
 const getUserById = (req, res) => {
     const id = req.params.id
+
     usersControllers.getUserById(id)
         .then(data => {
-            req.status(200).json(data)
+            res.status(200).json(data)
         })
         .catch((err) => {
             res.status(400).json({message: err.message})

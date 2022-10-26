@@ -39,12 +39,12 @@ app.get("/", (req, res) => {
     })
 })
 
-app.use("/api/v1/users", userRouter)
 app.use("/api/v1/auth", authRouter)
+app.use("/api/v1/users", userRouter)
 app.use("/api/v1/conversations", conversationRouter)
 app.use("/api/v1/conversations/:id/messages", messageRouter)
 
 
 app.listen(port, () => {
-    console.log(`Listening at ${port}` )
+    console.log(`Listening at http://localhost:${port}/` )
 })
